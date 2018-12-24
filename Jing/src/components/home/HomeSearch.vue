@@ -7,7 +7,7 @@
                 <form action="#">
                     <i class="iconfont icon-iconfontsousuokuangsousuo icon_search"></i>
                     <input type="search" class="search" placeholder="搜索商品..." 
-                        @click="goSearch()">
+                        @focus="goSearch()">
                 </form>
               <!-- 登录 -->
                 <router-link to="/login" class="login_btn">登录</router-link>
@@ -42,19 +42,18 @@
     background: rgba(201, 21, 35, 0);
 }
 
-.homeSearchBox .icon_logo {
+/*logo*/
+ .homeSearchBox .icon_logo {
     width: 60px;
     height: 36px;
     position: absolute;
     top: 4px;
     left: 10px;
-    background-image:'../../assets/images/sprites.png' ;
-    background-position: 0 -103px;
     display: block;
-
+    background:url('../../assets/images/sprites.png') 0 -303px;
+    background-size: 200px 200px;
+    display: block;
 }
-
-
 
 .homeSearchBox form {
     width: 100%;
@@ -64,6 +63,7 @@
     position: relative;
 }
 
+/*input*/
 .homeSearchBox form .search {
     width: 100%;
     height: 30px;
@@ -78,8 +78,7 @@
     height: 40px;
     position: absolute;
     left: 85px;
-    top: 10px;
-    background-position: -60px -109px;
+    top: 13px;
 }
 
 .homeSearchBox .login_btn {

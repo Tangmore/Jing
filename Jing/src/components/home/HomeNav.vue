@@ -1,6 +1,6 @@
 <template>
-	<div class="home_n">
-		<nav class="m_nav">
+	<div class="homeNav">
+		<nav class="homeNavItem">
                 <ul>
                     <li class="nav_item">
                         <a href="#" class="nav_item_link">
@@ -10,7 +10,7 @@
                     </li>
                     <li class="nav_item">
                         <a href="#" class="nav_item_link">
-                            <img src="../../assets/images/nav1.png" alt="">
+                            <img src="../../assets/images/nav1.gif" alt="">
                             <span>全球购</span>
                         </a>
                     </li>
@@ -66,3 +66,36 @@
             </nav>
 	</div>
 </template>
+
+<style >
+/*导航*/
+.homeNavItem {
+    max-width: 100%;
+    height: 150px;
+}
+.homeNavItem .nav_item {
+    width: 20%;
+    height: 70px;
+}
+.homeNavItem ul {
+    width: 100%;
+    padding-top: 16px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    text-align: center;
+}
+.nav_item .nav_item_link {
+    display: flex;
+    flex-direction: column;
+}
+
+.nav_item .nav_item_link img {
+    width: 30px;
+    height: 30px;
+    margin: 0 auto;
+}
+.nav_item .nav_item_link span {
+    font-size: 12px;
+}
+</style>

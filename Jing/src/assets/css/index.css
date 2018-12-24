@@ -11,42 +11,6 @@ body {
 
 
 
-/*导航*/
-
-.m_nav {
-    max-width: 100%;
-    height: 150px;
-}
-
-.m_nav ul {
-    width: 100%;
-    padding-top: 16px;
-}
-
-.m_nav .nav_item {
-    width: 20%;
-    height: 69px;
-    float: left;
-    text-align: center;
-}
-
-.nav_item .nav_item_link {
-    width: 100%;
-    height: 100%;
-    display: block;
-    text-align: center;
-}
-
-.nav_item .nav_item_link img {
-    display: block;
-    width: 30px;
-    height: 30px;
-    margin: 0 auto;
-}
-
-.nav_item .nav_item_link span {
-    font-size: 12px;
-}
 
 
 /*商品区*/
