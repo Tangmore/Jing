@@ -13,6 +13,7 @@
                         <ul>
                             <li class="product_skill_item" v-for="item in homeDatas">
                                 <router-link :to="'/detail/'+item.product_id" class="product_skill_item_link">
+                                <!--v-lazy懒加载-->
                                     <img v-lazy="item.product_img_url" alt="" class="product_skill_item_cion lazy-img-fadein">
                                     <p class="nowprice">
                                         <i style="text-decoration: none;font-style: normal;font-size: 12px">¥</i>
@@ -71,7 +72,7 @@
         methods:{
             getData(){
                 let self = this;
-                self.$http.get('/home').then((res)=>{
+                self.axios.get('/home').then((res)=>{
                     console.log(res);
                     if(res.status =='200'){
                         self.homeDatas = res.data.slice(0,4);
@@ -88,4 +89,5 @@
         }
   }
 </script>
+
 

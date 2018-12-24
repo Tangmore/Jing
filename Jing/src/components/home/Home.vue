@@ -8,6 +8,7 @@
         <!--导航区-->
         <HomeNav />
         <!--展示区-->
+        <HomeMain/>
       </div>
     </div>
 </template>
@@ -16,6 +17,7 @@
 import HomeSearch from './HomeSearch';
 import HomeBanner from './HomeBanner';
 import HomeNav from './HomeNav';
+import HomeMain from './HomeMain';
 export default {
   data () {
     return {
@@ -30,7 +32,8 @@ export default {
   components:{
       HomeSearch,
       HomeBanner,
-      HomeNav
+      HomeNav,
+      HomeMain
   }
 }
 </script>

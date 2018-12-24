@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '../components/home/Home'
 
+import Home from '../components/home/Home'
 import Catgory from '../components/catgory/Catgory'
 import Find from '../components/find/Find'
 import Cart from '../components/cart/Cart'
@@ -16,7 +16,7 @@ export default new Router({
   routes: [
     {path: '/home', component: Home},
     {path: '/',redirect: '/home'},
-    {path: '/detail/:id',component: GoodsDetail},
+    {path: '/detail/:id',component: GoodsDetail},//详情
     {path: '/search',component: SearchMain},
     {path: '/catgory',component: Catgory},
     {path: '/catgory/:id',component: Catgory},
