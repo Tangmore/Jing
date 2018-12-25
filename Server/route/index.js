@@ -1,23 +1,14 @@
 const express = require('express');
-const mysql = require('mysql');
+const pool = require("../pool");
 const common = require('../libs/common');
-const db = mysql.createPool({
-    host: 'localhost', // db host
-    user: 'root',     // db user
-    password: 'root',  //db pwd
-    database: 'jd'   // db name
-});
-module.exports = () => {
-    const route = express.Router(); //创建路由路径的链式路由句柄。
+const route = express.Router(); 
+
+
+    //获取主页数据
+    route.get('/home', (req, res) => {
     const getHomeStr = `SELECT product_id,product_name,product_price,product_img_url,product_uprice FROM product`;
     const getCateNames = `SELECT * FROM category ORDER BY category_id desc`;
-    //get homePage datas
-    route.get('/home', (req, res) => {
-        getHomeDatas(getHomeStr, res);
-    });
-
-    function getHomeDatas(getHomeStr, res) {
-        db.query(getHomeStr, (err, data) => {
+        pool.query(getHomeStr, (err, data) => {
             if (err) {
                 console.log(err);
                 res.status(500).send('database err').end();
@@ -29,14 +20,45 @@ module.exports = () => {
                 }
             }
         });
-    }
+    });
+
+    //获取产品详情
+    route.get('/detail', (req, res) => {
+        let produId = req.query.mId;
+        const imagesStr = `select image_url from product_image where product_id='${produId}'`;
+        const productStr = `select * from product where product_id='${produId}'`;
+        let detailDatas = [];
+        pool.query(imagesStr, (err, imgDatas) => {
+            if (err) {
+                console.error(err);
+                res.status(500).send('database err').end();
+            } else {
+                detailDatas.push(imgDatas);
+                pool.query(productStr, (err, data) => {
+                    if (err) {
+                        console.error(err);
+                        res.status(500).send('database err').end();
+                    } else {
+                        detailDatas.push(data);
+                        res.send(detailDatas);
+                    }
+                });
+            }
+        });
+    });
+
+
+
+
+
+
 
     route.get('/category', (req, res) => {
         getCateNamesDatas(getCateNames, res);
     });
 
     function getCateNamesDatas(getCateNames, res) {
-        db.query(getCateNames, (err, data) => {
+        pool.query(getCateNames, (err, data) => {
             if (err) {
                 console.log(err);
                 res.status(500).send('database err').end();
@@ -56,7 +78,7 @@ module.exports = () => {
     });
 
     function getCateGoods(sql, res) {
-        db.query(sql, (err, data) => {
+        pool.query(sql, (err, data) => {
             if (err) {
                 console.log(err);
                 res.status(500).send('database err').end();
@@ -69,33 +91,10 @@ module.exports = () => {
             }
         });
     }
-    route.get('/detail', (req, res) => {
-        let produId = req.query.mId;
-        const imagesStr = `select image_url from product_image where product_id='${produId}'`;
-        const productStr = `select * from product where product_id='${produId}'`;
-        let detailDatas = [];
-        db.query(imagesStr, (err, imgDatas) => {
-            if (err) {
-                console.error(err);
-                res.status(500).send('database err').end();
-            } else {
-                detailDatas.push(imgDatas);
-                db.query(productStr, (err, data) => {
-                    if (err) {
-                        console.error(err);
-                        res.status(500).send('database err').end();
-                    } else {
-                        detailDatas.push(data);
-                        res.send(detailDatas);
-                    }
-                });
-            }
-        });
 
-    });
     route.get('/cart', (req, res) => {
         const cartStr = "SELECT cart_id,user.user_id,product.product_id,product_name,product_uprice,product_img_url,goods_num,product_num,shop_name FROM product,user,goods_cart,shop where product.product_id=goods_cart.product_id and user.user_id=goods_cart.user_id and shop.shop_id = product.shop_id";
-        db.query(cartStr, (err, data) => {
+        pool.query(cartStr, (err, data) => {
             if (err) {
                 console.log(err);
                 res.status(500).send('database err').end();
@@ -135,7 +134,7 @@ module.exports = () => {
         get search datas
     */
     function getSearchDatas(keywordStr, res) {
-        db.query(keywordStr, (err, data) => {
+        pool.query(keywordStr, (err, data) => {
             if (err) {
                 console.log(err);
                 res.status(500).send('database err').end();
@@ -167,7 +166,7 @@ module.exports = () => {
      *deal user register
      */
     function delReg(insUserInfo, res) {
-        db.query(insUserInfo, (err) => {
+        pool.query(insUserInfo, (err) => {
             if (err) {
                 console.error(err);
                 res.send({ 'msg': '服务器出错', 'status': 0 }).end();
@@ -187,7 +186,7 @@ module.exports = () => {
         //let password = common.md5(mObj.loginPawd + common.MD5_SUFFXIE);
         // console.log(username, mObj.passwd);
         const selectUser = `SELECT * FROM user where user_name='${username}'`;
-        db.query(selectUser, (err, data) => {
+        pool.query(selectUser, (err, data) => {
             if (err) {
                 console.log(err);
                 res.send({ 'msg': '服务器出错', 'status': 0 }).end();
@@ -215,7 +214,7 @@ module.exports = () => {
     route.get('/userinfo', (req, res) => {
         let uId = req.query.uId;
         const getU = `SELECT user_name,user_number FROM user where user_id='${uId}'`;
-        db.query(getU, (err, data) => {
+        pool.query(getU, (err, data) => {
             if (err) {
                 console.log(err);
                 res.status(500).send('database err').end();
@@ -228,5 +227,6 @@ module.exports = () => {
             }
         });
     });
-    return route;
-}
+
+ module.exports=route;
+

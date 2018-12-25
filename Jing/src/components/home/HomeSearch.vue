@@ -15,12 +15,18 @@
     </header>       
 </template>
 <script>
+import {topNavFixed}  from '../../assets/js/header.js';
+
     export default {
         methods: {
             goSearch(){
                 this.$router.push('/catgory');
-            }
-        }
+            },
+           
+        },
+        mounted() {
+            topNavFixed();
+        },
     }
 </script>
 <style>
@@ -65,7 +71,7 @@
 
 /*input*/
 .homeSearchBox form .search {
-    width: 100%;
+    width: 66%;
     height: 30px;
     border-radius: 15px;
     margin-top: 5px;

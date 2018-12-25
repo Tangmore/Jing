@@ -1,12 +1,11 @@
 <template>
-    <div class="goods_detail">
+    <div class="goodsDetail">
         <header class="top_bar">
             <a @click="goBack" class="icon_back"></a>
-            <!-- <a onclick="window.history.go(-1)" class="icon_back"></a> -->
             <h3 class="cartname">商品详情</h3>
             <a href="#" class="icon_menu"></a> 
         </header>
-        <main class="detail_box">
+        <!-- <main class="detail_box">
             <section class="banner_box">
                 <Banner :imgDatas ='goodsImages' v-if="flag"/>
             </section>
@@ -30,7 +29,7 @@
                 </p>
            </section>
           
-        </main>
+        </main> -->
         <footer class="cart_d_footer">
             <div class="m">
                 <ul class="m_box">
@@ -79,7 +78,7 @@
             },
             getData(id){ 
                 let self = this;
-                self.$http.get('/detail',{params:{mId:id}}).then((res)=>{
+                self.axios.get('/detail',{params:{mId:id}}).then((res)=>{
                     console.log(res);
                     if(res.status =='200'){
                         self.goodsImages = res.data[0];  //轮播数据

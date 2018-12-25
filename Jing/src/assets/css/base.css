@@ -5,7 +5,7 @@
     margin: 0;
     /*去掉chorm浏览器中默认点击的颜色*/
     -webkit-tap-highlight-color: transparent;
-    -webkit-box-sizing: border-box;
+    /* -webkit-box-sizing: border-box; */
 }
 
 body {
@@ -41,6 +41,8 @@ textarea {
     display: block;
     visibility: hidden;
 }
+
+
 
 .top_bar {
     width: 100%;

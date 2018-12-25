@@ -38,5 +38,14 @@ export default {
 }
 </script>
 <style>
-    @import '../../assets/css/index.css'
+body{
+  background-color: #fff;
+}
+.m_layout {
+    min-width: 300px;
+    max-width: 640px;
+    margin: 0 auto;
+    position: relative;
+}
+
 </style>
