@@ -89,7 +89,7 @@
 /*秒杀区*/
 .m_product_top .product_top {
     box-shadow: 0 0 1px 1px #e0e0e0;
-        height: 32px;
+    height: 32px;
     border-bottom: 1px solid #ccc;
     display: flex;
     height: 32px;
@@ -115,23 +115,25 @@
 }
 .product_content ul{
     height: 130px;
-    display: flex;
-    justify-content: space-around;
-    flex-direction: row;
-    flex-wrap: wrap;
-    text-align: center;
+    text-align:center;
     background-color: #fff;
 }
 
 .product_sale_item .product_sale_item_link{
     width: 25%;
     height: 130px;
+    float:left;
 }
 .product_sale_item_link .product_sale_item_img{
     width: 80px;
     height: 80px;
 }
-
+@media screen and (max-width:320px){
+.product_sale_item_link .product_sale_item_img{
+    width: 60px;
+    height: 60px;
+}
+}
 .product_sale_item_link .nowPrice{
     width: 80px;
     color: #f00;
@@ -160,19 +162,11 @@
     height: auto;
     width: 100%;
 }
-.recommend_content_box .recommend_thing_box ul{
-    display: flex;
-    justify-content: space-around;
-    flex-direction: row;
-    flex-wrap: wrap;
-    text-align: center;
-}
-
 .recommend_content_box .recommend_thing_item{
     width: 50%;
     text-align: center;
     background-color: #fff;
-    overflow: hidden;
+    float:left;
 }
 
 .recommend_content_box .recommend_thing_pic{
@@ -184,7 +178,6 @@
 .recommend_content_box .recommend_thing_info{
     text-align: left;
     margin-left: 5px;
-
 }
 
 .recommend_content_box .recommend_thing_title{

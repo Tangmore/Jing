@@ -58,20 +58,20 @@ import {topNavFixed}  from '../../assets/js/header.js';
     display: block;
     background:url('../../assets/images/sprites.png') 0 -303px;
     background-size: 200px 200px;
-    display: block;
 }
 
 .homeSearchBox form {
-    width: 100%;
+    width: 64%;
     height: 40px;
     padding-left: 75px;
     padding-right: 60px;
     position: relative;
+    margin:0 auto;
 }
 
 /*input*/
 .homeSearchBox form .search {
-    width: 66%;
+    width: 100%;
     height: 30px;
     border-radius: 15px;
     margin-top: 5px;
@@ -92,10 +92,15 @@ import {topNavFixed}  from '../../assets/js/header.js';
     width: 30px;
     height: 40px;
     position: absolute;
-    right: 8px;
+    right:12px;
     top: 0;
     color: #fff;
     line-height: 40px;
     font-weight: 400;
+}
+.homeSearchBox .scroll{
+    background:rgba(0,0,0,.4);
+    border-bottom:1px solid #ccc;
+    box-shadow: 0 -2px 10px #ccc inset;
 }
 </style>

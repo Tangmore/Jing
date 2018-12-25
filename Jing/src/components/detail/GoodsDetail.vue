@@ -1,18 +1,23 @@
 <template>
     <div class="goodsDetail">
-        <header class="top_bar">
-            <a @click="goBack" class="icon_back"></a>
+       <!--详情固定头部bar-->
+        <header class="topBar">
+            <a @click="goBack" class="icon_back"> <i class='iconfont icon-xiangzuo'></i></a>
             <h3 class="cartname">商品详情</h3>
-            <a href="#" class="icon_menu"></a> 
+            <a href="#" class="icon_menu"> <i class='iconfont icon-diandiandian'></i></a> 
         </header>
-        <!-- <main class="detail_box">
-            <section class="banner_box">
+
+        <section class="detail_box">
+        <!--图片轮播-->
+            <div class="banner_box">
                 <Banner :imgDatas ='goodsImages' v-if="flag"/>
-            </section>
-            <section class="product_info clearfix">
-                <div class="product_left">
-                    <p class="p_name">{{goodsData[0] ? goodsData[0].product_name : ''}}</p>
-                    <div class="product_pric">
+            </div>
+
+             <!--title-->
+            <div class="product_info clearfix">
+                <div class="product_price_box">
+                    <p class="product_name">{{goodsData[0] ? goodsData[0].product_name : ''}}</p>
+                    <div class="product_price">
                         <span>￥</span>
                         <span class="rel_price">{{goodsData[0] ? goodsData[0].product_price : ''}}</span>
                         <span>.00</span>
@@ -21,39 +26,42 @@
                         降价通知
                     </div>
                 </div>
+            </div>
 
-            </section>
-            <section class="product_intro">
-                <p class="pro_det">
+             <!--商品介绍-->
+            <div class="product_intro clearfix">
+                <p class="product_detail">
                     {{goodsData[0] ? goodsData[0].product_detail : ''}}
                 </p>
-           </section>
+           </div>
           
-        </main> -->
-        <footer class="cart_d_footer">
-            <div class="m">
-                <ul class="m_box">
-                    <li class="m_item">
-                        <a href="" class="m_item_link">
-                            <em class="m_item_pic"></em>
+        </section> 
+
+         <!--详情固定底部bar-->
+        <footer class="detail_footer">
+            <div class="footer_box">
+              <div class='cop_footer'>
+                        <a href="#" class="footer_item_link">
+                            <i class='iconfont icon-maijia2'></i>
                             <span class="m_item_name">卖家</span>
                         </a>
-                        <a href="" class="m_item_link">
-                            <em class="m_item_pic two"></em>
+                        <a href="#" class="footer_item_link">
+                             <i class='iconfont icon-guanzhu'></i>
                             <span class="m_item_name">关注</span>
                         </a>
-                        <a href="" class="m_item_link">
-                            <em class="m_item_pic three"></em>
+                        <a href="#" class="footer_item_link">
+                             <i class='iconfont icon-gouwuche1'></i>
                             <span class="m_item_name">购物车</span>
                         </a>
-                    </li>
-                </ul>
-                <div class="btn_box clearfix" >
-                    <a href="#" class="buy_now">加入购物车</a>
-                    <a href="#" class="buybuy">立即购买</a>
+              </div>
+                <div class="btnBox clearfix" >
+                    <a href="#" class="add_to_cart">加入购物车</a>
+                    <a href="#" class="buy_now">立即购买</a>
                 </div>
             </div>
+
         </footer>
+
     </div>
 </template>
 <script>
@@ -62,8 +70,8 @@
         data () {
             return {
                 num:0,
-                goodsImages:[],
-                goodsData:[],
+                goodsImages:[],  //轮播数据
+                goodsData:[],   //商品介绍
                 flag:false
             }
         },
@@ -97,7 +105,4 @@
 </script>
 <style>
     @import '../../assets/css/detail.css';
-    .cart_d_footer {
-        z-index:10;
-    }
 </style>
