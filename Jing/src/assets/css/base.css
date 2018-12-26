@@ -29,7 +29,7 @@ textarea {
     resize: none;
     outline: none;
     /*清除移动设备中表单的默认样式*/
-    -webkit-appearance: none;
+    /* -webkit-appearance: none; */
 }
 
 /* 清除浮动 */

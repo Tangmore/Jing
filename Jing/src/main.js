@@ -3,7 +3,7 @@
 import Vue from 'vue'
 import axios from 'axios'
 import VueLazyload from 'vue-lazyload'
-
+import store from './store/store'
 import App from './App'
 import router from './router'
 import './assets/font/iconfont.css'

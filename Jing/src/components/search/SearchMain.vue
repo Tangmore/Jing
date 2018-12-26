@@ -17,13 +17,12 @@
 				<span class="all">全部</span>
 				<em class="all_icon"></em>
 			  </li>
-			  <li>
-				<span @click="goSearch('hot')">销量</span>
+			  <li  @click="getByHot">
+				<span >销量</span>
 			  </li>
-			  <li class="product_price">
+			  <li class="product_price" @click="getByPrice">
 				<span>价格</span>
-				<em  class="price_nav" @click="getByPrice()" v-show='PriceFlag'></em>
-				<!-- <em class="price_nav" @click="getPriceDown()"  v-show='downPriceFlag'></em> -->
+				<em  class="price_nav"></em>
 			  </li>
 			  <li>
 				<span>筛选</span>
@@ -67,17 +66,35 @@
     data() {
       return {
         keyword: '',
-		searchData: [],
-		priceFlag:false,
-		hot:'',
-		priceDown:'',
-		priceUp:''
+				searchData: [],
+				priceFlag:true,
+				hot:'',
+				priceDown:'',
+				priceUp:''
       }
     },
     methods: {
+
 		getByPrice(){
-			// if(this.pri)
-		
+			  this.hot='';
+				if(this.priceFlag){	
+					this.priceFlag=false;
+					this.priceUp='';
+					this.priceDown=1;
+					this.goSearch();
+				}else{			
+					this.priceDown='';
+					this.priceUp=1;
+					this.goSearch();
+					this.priceFlag=true;
+				}
+		},
+
+		getByHot(){
+			this.priceUp='';
+			this.priceDown='';
+      this.hot=1;
+      this.goSearch();
 		},
 
       goBack() {

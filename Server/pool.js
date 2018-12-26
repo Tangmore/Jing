@@ -3,7 +3,7 @@ var pool = mysql.createPool({
 	host: "127.0.0.1",//服务器ip
 	port: 3306,
 	user: "root",
-	password: "",
+	password: "root",
 	database: "jd",
 	connetionLimit: 15
 });

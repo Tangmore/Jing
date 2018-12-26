@@ -9,15 +9,11 @@ const route = express.Router();
     const getHomeStr = `SELECT product_id,product_name,product_price,product_img_url,product_uprice FROM product`;
     const getCateNames = `SELECT * FROM category ORDER BY category_id desc`;
         pool.query(getHomeStr, (err, data) => {
-            if (err) {
-                console.log(err);
-                res.status(500).send('database err').end();
+            if (err) throw err;
+            if (data.length == 0) {
+                res.status(500).send('no datas').end();
             } else {
-                if (data.length == 0) {
-                    res.status(500).send('no datas').end();
-                } else {
-                    res.send(data);
-                }
+                res.send(data);
             }
         });
     });
@@ -29,26 +25,69 @@ const route = express.Router();
         const productStr = `select * from product where product_id='${produId}'`;
         let detailDatas = [];
         pool.query(imagesStr, (err, imgDatas) => {
-            if (err) {
-                console.error(err);
-                res.status(500).send('database err').end();
-            } else {
-                detailDatas.push(imgDatas);
-                pool.query(productStr, (err, data) => {
-                    if (err) {
-                        console.error(err);
-                        res.status(500).send('database err').end();
-                    } else {
-                        detailDatas.push(data);
-                        res.send(detailDatas);
-                    }
+            if (err) throw err;
+            detailDatas.push(imgDatas);
+            pool.query(productStr, (err, data) => {
+                if (err) throw err;
+                    detailDatas.push(data);
+                    res.send(detailDatas);
                 });
-            }
-        });
     });
+    });
+    // 商品搜索
+    route.get('/search', (req, res) => {
+        let keyWord = req.query.kw;
+        let hot = req.query.hot;
+        let priceUp = req.query.priceUp;
+        let priceDown = req.query.priceDown;
+        // 按关键词---普通查询
+        const keywordStr = `select  *  from product,shop where product.shop_id=shop.shop_id and product.product_name like '%${keyWord}%'`;
+        // 按评论数
+        const hotStr = `select  *  from product,shop where product.shop_id=shop.shop_id and product.product_name like '%${keyWord}%' order by product_comment_num desc`;
+        // 按价格
+        const priceUpStr = `select  *  from product,shop where product.shop_id=shop.shop_id and product.product_name like '%${keyWord}%' order by product_uprice asc`;
+        const priceDownStr = `select  *  from product,shop where product.shop_id=shop.shop_id and product.product_name like '%${keyWord}%' order by product_uprice desc`;
+        if (keyWord != '') {
+            if (hot != '') {
+                getSearchDatas(hotStr, res);
+            } else if (priceUp != '') {
+                getSearchDatas(priceUpStr, res);
+            } else if (priceDown != '') {
+                getSearchDatas(priceDownStr, res);
+            } else {
+                getSearchDatas(keywordStr, res);
+            }
+        }
+
+    });
+ 
+    function getSearchDatas(keywordStr, res) {
+        pool.query(keywordStr, (err, data) => {
+            if (err) throw err;
+                if (data.length == 0) {
+                    res.status(500).send('no datas').end();
+                } else {
+                    res.send(data);
+                }
+        });
+    }
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
 
 
 
@@ -71,6 +110,8 @@ const route = express.Router();
             }
         });
     };
+
+
     route.get('/categorygoods', (req, res) => {
         let mId = req.query.mId;
         const sql = `select * from product,category where product.category_id=category.category_id and category.category_id='${mId}'`;
@@ -108,48 +149,7 @@ const route = express.Router();
         });
     })
 
-    route.get('/search', (req, res) => {
-        let keyWord = req.query.kw;
-        let hot = req.query.hot;
-        let priceUp = req.query.priceUp;
-        let priceDown = req.query.priceDown;
-        // 按关键词---普通查询
-        const keywordStr = `select  *  from product,shop where product.shop_id=shop.shop_id and product.product_name like '%${keyWord}%'`;
-        // 按评论数
-        const hotStr = `select  *  from product,shop where product.shop_id=shop.shop_id and product.product_name like '%${keyWord}%' order by product_comment_num desc`;
-        // 按价格
-        const priceUpStr = `select  *  from product,shop where product.shop_id=shop.shop_id and product.product_name like '%${keyWord}%' order by product_uprice asc`;
-        const priceDownStr = `select  *  from product,shop where product.shop_id=shop.shop_id and product.product_name like '%${keyWord}%' order by product_uprice desc`;
-        if (keyWord != '') {
-            if (hot != '') {
-                getSearchDatas(hotStr, res);
-            } else if (priceUp != '') {
-                getSearchDatas(priceUpStr, res);
-            } else if (priceDown != '') {
-                getSearchDatas(priceDownStr, res);
-            } else {
-                getSearchDatas(keywordStr, res);
-            }
-        }
-
-    });
-    /**
-        get search datas
-    */
-    function getSearchDatas(keywordStr, res) {
-        pool.query(keywordStr, (err, data) => {
-            if (err) {
-                console.log(err);
-                res.status(500).send('database err').end();
-            } else {
-                if (data.length == 0) {
-                    res.status(500).send('no datas').end();
-                } else {
-                    res.send(data);
-                }
-            }
-        });
-    }
+   
     /*
      *user reg func
      */
@@ -214,6 +214,7 @@ const route = express.Router();
         });
 
     });
+
     route.get('/userinfo', (req, res) => {
         let uId = req.query.uId;
         const getU = `SELECT user_name,user_number FROM user where user_id='${uId}'`;

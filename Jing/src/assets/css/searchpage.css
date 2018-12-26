@@ -48,6 +48,8 @@
     background-position: 0 -109px;
 }
 .search_condition .product_price .price_nav{
+    width: 12px;
+    height: 8px;
     background-position: -170px -31px;
 }
 
