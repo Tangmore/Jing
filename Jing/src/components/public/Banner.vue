@@ -7,9 +7,9 @@
         
         </ul>
         <div class="banner_count">
-                <i id="slide-nub" class="now_count">{{num+1}}</i>
+                <i class="now_count">{{num+1}}</i>
                 <i class="nub-bg">/</i>
-                <i id="slide-sum" class="total_count">{{imgDatas.length}}</i>
+                <i class="total_count">{{imgDatas.length}}</i>
         </div>
 	</div>
 </template>

@@ -113,8 +113,11 @@ const route = express.Router();
         let hot = req.query.hot;
         let priceUp = req.query.priceUp;
         let priceDown = req.query.priceDown;
+        // 按关键词---普通查询
         const keywordStr = `select  *  from product,shop where product.shop_id=shop.shop_id and product.product_name like '%${keyWord}%'`;
+        // 按评论数
         const hotStr = `select  *  from product,shop where product.shop_id=shop.shop_id and product.product_name like '%${keyWord}%' order by product_comment_num desc`;
+        // 按价格
         const priceUpStr = `select  *  from product,shop where product.shop_id=shop.shop_id and product.product_name like '%${keyWord}%' order by product_uprice asc`;
         const priceDownStr = `select  *  from product,shop where product.shop_id=shop.shop_id and product.product_name like '%${keyWord}%' order by product_uprice desc`;
         if (keyWord != '') {

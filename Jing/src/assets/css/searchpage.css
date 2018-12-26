@@ -1,31 +1,26 @@
-body {
-    background-color: #fff;
-}
-
-.h_layout {
-    min-width: 300px;
-    max-width: 640px;
-    margin: 0 auto;
+/* 头部 */
+.head_layout{
     position: relative;
-    height: 1000px;
-    background-color: #fff;
+    overflow: hidden;
 }
-
-.h_layout .top_bar {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 40px;
-    z-index: 2;
+.head_layout .goods_search_keywords {
+    width: 72%;
+    height: 30px;
+    border-radius: 15px;
+    border: 1px solid #ccc;
+    /* box-shadow: 0 1px 1px #848689; */
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    padding: 8px;
 }
-
-.h_layout .search_condition {
+/* 查询条件 */
+.searchPage .search_condition {
     width: 100%;
-    height: 40px;
-    margin-top: 40px;
+    height: 46px;
+    margin-top: 50px;
     border-bottom: 1px solid #DFDFDF;
-    border-top: 1px solid #DFDFDF;
 }
 
 .search_condition ul {
@@ -37,53 +32,48 @@ body {
 .search_condition ul li {
     width: 25%;
     height: 100%;
-    float: left;
     text-align: center;
-    line-height: 40px;
+    line-height: 46px;
 }
 
-li em {
-    width: 8px;
-    height: 7px;
+.search_condition li em {
+    width: 10px;
+    height: 8px;
     display: inline-block;
     background: url("../images/jd-sprites.png") no-repeat;
     background-size: 200px 200px;
 }
 
-.all_icon {
+.search_condition .all_icon{
     background-position: 0 -109px;
 }
-
-.price_up {
-    background-position: -170px -28px;
+.search_condition .product_price .price_nav{
+    background-position: -170px -31px;
 }
 
-.price_down {
-    background-position: -170px -36px;
-    margin-left: -12px;
-}
 
-.saixuan {
-    width: 15px;
-    height: 13px;
+.search_condition .drop {
+    width: 16px;
+    height: 12px;
     display: inline-block;
-    background: url("../images/jd-search-sprites.png") no-repeat;
+    background: url("../images/jd-search-sprites.png") -175px 3px no-repeat;
     background-size: 200px 200px;
-    background-position: -178px 3px;
     margin-left: -4px;
 }
 
-.all {
+.search_condition span {
     color: #F23030;
 }
 
-.main_goods_box {
-    width: 100%;
-    border-top: 1px solid #DFDFDF;
-    margin-top: 10px;
-}
 
-.main_goods_box .goods_item {
+
+/* 商品详情 */
+.search_goods_box {
+    width: 100%;
+    margin-top: 70px;
+    padding-top:30px;  
+}
+.search_goods_box .goods_item {
     width: 100%;
     height: 120px;
     padding: 10px;
@@ -110,7 +100,7 @@ li em {
     height: 100%;
 }
 
-.goods_right .pp_name {
+.goods_right .product_name {
     height: 40%;
 }
 
@@ -126,7 +116,7 @@ li em {
     margin: 0 -3px;
 }
 
-.goods_right .pinglun_box {
+.goods_right .content_count {
     margin-top: 5px;
     color: #848689;
-}
+} 

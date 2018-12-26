@@ -52,7 +52,7 @@ textarea {
     box-shadow: 1px 1px 1px #ccc;
     border-bottom: 1px solid #ccc;
     position: fixed;
-    z-index: 2;
+    z-index: 99;
 }
 
 .topBar .icon_back {

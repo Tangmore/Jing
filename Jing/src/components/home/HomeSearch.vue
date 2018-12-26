@@ -20,7 +20,7 @@ import {topNavFixed}  from '../../assets/js/header.js';
     export default {
         methods: {
             goSearch(){
-                this.$router.push('/catgory');
+                this.$router.push('/search');
             },
            
         },
