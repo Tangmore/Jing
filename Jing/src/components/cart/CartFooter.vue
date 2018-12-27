@@ -43,7 +43,7 @@
     position: fixed;
     bottom: 0;
 	left: 0;
-	z-index: 99;
+	/*z-index:99;*/
     background-color: #fff;
 }
 /*全选*/

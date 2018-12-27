@@ -52,7 +52,7 @@
             </div>
           
         </div>
-        <div class="pop" v-show="popStatus">
+        <!-- <div class="pop" v-show="popStatus">
           <div class="pop_box">
               <div class="del_info">
                   确定要删除该商品吗？ 
@@ -64,13 +64,13 @@
                   确定
               </div>
           </div>
-        </div>
+        </div> -->
   </div>
 </template>
 
 <script>
 //mapGetters 辅助函数  获取store中的getters值
-import { mapGetters,mapActions } from 'vuex'
+import { mapGetters,mapActions} from 'vuex'
 export default {
   data () { 
     return {
@@ -78,26 +78,8 @@ export default {
       curId:''
     }
   },
-   mounted(){
-        this.$store.dispatch('hideNav')     //触发store中的隐藏的方法
-    },
-    destroyed(){
-        this.$store.dispatch('showNav')     //触发store中的显示的方法
-    },
-  // computed:{
-  //   num(){
-  //     return this.$store.state.count
-  //   }
-  // }
   computed :mapGetters(['cartDatas']),
-  // methods:{
-  //   add(){
-  //     this.$store.dispatch('add')
-  //   },
-  //   decrement(){
-  //     this.$store.dispatch('decrement')
-  //   }
-  // }
+
    methods:{
     ...mapActions(['incrementData','decrementData']),
     delCart:function(id){   //删除

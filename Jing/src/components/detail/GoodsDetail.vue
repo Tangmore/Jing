@@ -51,8 +51,8 @@
                         </a>
               </div>
                 <div class="btnBox clearfix" >
-                    <a href="#" class="add_to_cart">加入购物车</a>
-                    <a href="#" class="buy_now">立即购买</a>
+                    <a href='javascript:void(0)' class="add_to_cart" @click='addToCart'>加入购物车</a>
+                    <a href="javascript:void(0)" class="buy_now">立即购买</a>
                 </div>
             </div>
 
@@ -76,6 +76,11 @@
         },
         mounted(){
             this.getData(this.$route.params.id);
+            this.$store.dispatch('hideNav')
+        },
+
+        destroyed() {
+            this.$store.dispatch('showNav')
         },
         methods:{
             goBack(){
@@ -93,6 +98,15 @@
                 },(error)=>{
                     console.log(error);
                 })
+            },
+            addToCart(){
+                // let data=this.goodsData[0];
+                let data=JSON.parse(JSON.stringify(this.goodsData[0]));
+
+                data.num=0;//商品数量
+
+                this.$store.dispatch('addCart',data);  //将数据存于store
+                this.$router.push('/cart');
             }
         },
         components:{

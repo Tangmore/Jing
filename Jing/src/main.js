@@ -25,6 +25,7 @@ Vue.use(VueLazyload,{
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })

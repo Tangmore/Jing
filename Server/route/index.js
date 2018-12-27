@@ -6,7 +6,8 @@ const route = express.Router();
 
     //获取主页数据
     route.get('/home', (req, res) => {
-        const getHomeStr = `SELECT product_id,product_name,product_price,product_img_url,product_uprice FROM product`;
+    const getHomeStr = `SELECT product_id,product_name,product_price,product_img_url,product_uprice FROM product`;
+    const getCateNames = `SELECT * FROM category ORDER BY category_id desc`;
         pool.query(getHomeStr, (err, data) => {
             if (err) throw err;
             if (data.length == 0) {
@@ -17,7 +18,7 @@ const route = express.Router();
         });
     });
 
-    //获取产品详情
+    //获取产品详情    
     route.get('/detail', (req, res) => {
         let produId = req.query.mId;
         const imagesStr = `select image_url from product_image where product_id='${produId}'`;
@@ -71,41 +72,66 @@ const route = express.Router();
         });
     }
 
-//   获取商品分类列标题
-    const getCateNames = `SELECT * FROM category ORDER BY category_id desc`;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     route.get('/category', (req, res) => {
+        getCateNamesDatas(getCateNames, res);
+    });
+
+    function getCateNamesDatas(getCateNames, res) {
         pool.query(getCateNames, (err, data) => {
-            if (err) throw err;
+            if (err) {
+                console.log(err);
+                res.status(500).send('database err').end();
+            } else {
                 if (data.length == 0) {
                     res.status(500).send('no datas').end();
                 } else {
                     res.send(data);
                 }
+            }
         });
-    });
+    };
 
-// 获取商品分类列商品
+
     route.get('/categorygoods', (req, res) => {
         let mId = req.query.mId;
         const sql = `select * from product,category where product.category_id=category.category_id and category.category_id='${mId}'`;
+        getCateGoods(sql, res);
+    });
+
+    function getCateGoods(sql, res) {
         pool.query(sql, (err, data) => {
-            if (err) throw err;
+            if (err) {
+                console.log(err);
+                res.status(500).send('database err').end();
+            } else {
                 if (data.length == 0) {
                     res.status(500).send('no datas').end();
                 } else {
                     res.send(data);
                 }
+            }
         });
-    });
-
-
-
-
-
-
-
-
-
+    }
 
     route.get('/cart', (req, res) => {
         const cartStr = "SELECT cart_id,user.user_id,product.product_id,product_name,product_uprice,product_img_url,goods_num,product_num,shop_name FROM product,user,goods_cart,shop where product.product_id=goods_cart.product_id and user.user_id=goods_cart.user_id and shop.shop_id = product.shop_id";
