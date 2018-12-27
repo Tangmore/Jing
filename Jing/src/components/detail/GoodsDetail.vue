@@ -1,11 +1,7 @@
 <template>
-    <div class="goodsDetail">
-       <!--详情固定头部bar-->
-        <header class="topBar">
-            <a @click="goBack" class="icon_back"> <i class='iconfont icon-xiangzuo'></i></a>
-            <h3 class="cartname">商品详情</h3>
-            <a href="#" class="icon_menu"> <i class='iconfont icon-diandiandian'></i></a> 
-        </header>
+    <div class="goodsDetail m_layout">
+         <!--详情固定头部bar-->
+        <commonHead :title='msg' :where='home'></commonHead>
 
         <section class="detail_box">
         <!--图片轮播-->
@@ -65,14 +61,17 @@
     </div>
 </template>
 <script>
-    import Banner from '../public/Banner'
+    import Banner from '../public/Banner';
+    import commonHead from '../public/commonHead';
    export default {
         data () {
             return {
                 num:0,
                 goodsImages:[],  //轮播数据
                 goodsData:[],   //商品介绍
-                flag:false
+                flag:false,
+                msg:'商品详情',
+                home:-1
             }
         },
         mounted(){
@@ -80,8 +79,6 @@
         },
         methods:{
             goBack(){
-                //this.$router.push('/home');
-                //this.$router.push({path:'/home'});
                 window.history.go(-1)
             },
             getData(id){ 
@@ -99,7 +96,8 @@
             }
         },
         components:{
-            Banner
+            Banner,
+            commonHead
         }
   }
 </script>

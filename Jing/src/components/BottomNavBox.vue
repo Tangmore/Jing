@@ -1,11 +1,11 @@
 <template>
-  <div class="footer">
+  <div class="footer ">
     <footer class="bottomNavBox"> 
         <router-link  to="/home" class="tabItem">
           <i class="iconfont icon-shouye"></i>
           <label>首页</label>
         </router-link>
-        <router-link  to="/catgory" class="tabItem">
+        <router-link  to="/catgory/34" class="tabItem">
           <i class="iconfont icon-fenlei"></i>
           <label>分类</label>
         </router-link>

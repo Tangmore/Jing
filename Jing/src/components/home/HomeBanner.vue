@@ -62,8 +62,8 @@ export default {
 }
 .homeBanner .pointerBox li {
     float: left;
-    width: 6px;
-    height: 6px;
+    width: 4px;
+    height: 4px;
     border-radius: 3px;
     border: 1px solid #fff;
     margin-right: 10px;
