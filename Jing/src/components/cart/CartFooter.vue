@@ -1,36 +1,46 @@
 <template>
 	<div class="cart_footer_box">
 		<footer class="cart_footer">
-		    <div class="all_check_box ">
-		        <i class="iconfont icon-xuanze"></i>
-		        <span>全选</span>
+		    <div class="all_check_box " @click="checkAllItem">
+		        <i class="iconfont icon-xuanze" v-show='$store.state.checkedAll==false'></i>
+				 <i class="iconfont icon-gouxuanzhong"  v-show="$store.state.checkedAll" style="color:#f00"></i>
+		        <span >全选</span>
 		    </div>
 		    <div class="total_money_box">
-		        <div class="heji">
-		            <strong>合计:</strong> 
-		            <strong>￥</strong>
-		            <!-- <strong>{{total.toFixed(2)}}</strong> -->
-					<strong>2300.00</strong>
+		        <div class="total">
+		            <strong class="total_cate">合计:</strong> 
+		            <i>￥</i>
+		            <strong>{{total.toFixed(2)}}</strong>
+					<!-- <strong>00.00</strong> -->
+					<p class="total_cate">优惠： <i>￥</i><span>00.00</span></p>
 		        </div>
-		     
-		            <a href="#" class="go_pay">
-		                <span>去计算(1)</span>
+		            <a href="javascript:void(0)" class="go_pay">
+		                <span>去计算(<span>{{totalCount}}</span>)</span>
 		            </a>
 		    </div>
 		</footer>
 	</div>
 </template>
 <script>
-	// import {mapGetters} from 'vuex'
+import {mapActions,mapGetters,mapState} from 'vuex';
+
 	export default {
 		data() {
 			return {
 				
 			}
 		},
-		// computed:{
-	    //   ...mapGetters(['total'])
-	    // }
+		computed: {
+		  ...mapGetters(['total','cartDatas','totalCount']),
+		
+		},
+           mounted() {
+			//    console.log()
+		   },
+		methods: {
+			...mapActions(['checkAllItem'])
+	        
+		},
 	}
 </script>
 
@@ -45,12 +55,14 @@
 	left: 0;
 	/*z-index:99;*/
     background-color: #fff;
+
 }
 /*全选*/
 .cart_footer .all_check_box {
     width: 100px;
     height: 50px;
-	padding-left: 16px;
+	padding-left: 16px;	
+	float: left;
 }
 
 .cart_footer .all_check_box span {
@@ -65,39 +77,36 @@
 .cart_footer .total_money_box {
     float: left;
     height: 50px;
-    margin-left: 80px;
+    margin-left: 20px;
 }
 
-.total_money_box .heji {
+.total_money_box .total {
 	margin-top: 6px;
-	position: absolute;
-	top: 10;
-	float:right;
+	float:left;
 }
 
-.total_money_box .total_money {
-    color: #aaa;
+.total_money_box .total_cate {
     font-size: 12px;
 }
 
-.total_money_box .total_money i {
+.total_money_box .total i {
     font-style: normal;
     text-decoration: none;
+	color: #000;
 }
 
 .total_money_box .go_pay {
     position: absolute;
     right: 0;
     top: 0;
-    max-width: 98px;
+	display: block;
+	width: 98px;
+    height: 50px;
     line-height: 50px;
     text-align: center;
     background: #f23030;
     color: #fff;
     font-size: 16px;
-    height: 49px;
-    margin-top: 1px;
-    padding: 0 16px;
 }
 
 </style>

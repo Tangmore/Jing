@@ -89,7 +89,7 @@
             getData(id){ 
                 let self = this;
                 self.axios.get('/detail',{params:{mId:id}}).then((res)=>{
-                    console.log(res);
+                    // console.log(res);
                     if(res.status =='200'){
                         self.goodsImages = res.data[0];  //轮播数据
                         self.flag = true;
@@ -104,6 +104,7 @@
                 let data=JSON.parse(JSON.stringify(this.goodsData[0]));
 
                 data.num=0;//商品数量
+                data.checked=true;//商品被选中
 
                 this.$store.dispatch('addCart',data);  //将数据存于store
                 this.$router.push('/cart');

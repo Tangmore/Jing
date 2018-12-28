@@ -35,5 +35,5 @@ import {mapActions} from 'vuex'
  }
 </script>
 <style>
-/* @import '../../assets/css/cart.css'; */
+@import '../../assets/css/cart.css';
 </style>

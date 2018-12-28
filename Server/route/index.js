@@ -34,6 +34,8 @@ const route = express.Router();
                 });
     });
     });
+
+    
     // 商品搜索
     route.get('/search', (req, res) => {
         let keyWord = req.query.kw;
