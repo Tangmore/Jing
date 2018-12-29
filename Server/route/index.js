@@ -3,7 +3,8 @@ const pool = require("../pool");
 const common = require('../libs/common');
 const route = express.Router(); 
 
-
+   const getHomeStr = `SELECT product_id,product_name,product_price,product_img_url,product_uprice FROM product`;
+    const getCateNames = `SELECT * FROM category ORDER BY category_id desc`;
     //获取主页数据
     route.get('/home', (req, res) => {
     const getHomeStr = `SELECT product_id,product_name,product_price,product_img_url,product_uprice FROM product`;

@@ -3,7 +3,7 @@
 		 <section class="m_product_top">
               <div class="product_top">
                   <!-- title -->
-                   <img src="../../assets/images/jd_skill.png" alt="" class="miaosha_icon">
+                   <span class="miaosha_icon">全场秒杀</span>
                     <strong class="dianshu">六点场</strong>
                     <span class="time">00:21:43</span>
                </div>
@@ -98,6 +98,10 @@
 .m_product_top .product_top .miaosha_icon{
     height: 30px;
     width: 60px;
+    line-height: 32px;
+    color: #ff2000;
+    font-weight: bold;
+    padding-left:4px;
 }
 
 .product_top .dianshu{

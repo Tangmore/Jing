@@ -16,7 +16,8 @@ app.use(cors({
         "http://192.168.0.112:3008",
         "http://127.0.0.1:3008",
         "http://127.0.0.1:8080",
-        "http://localhost:8080"
+        "http://localhost:8080",
+        'http://localhost:4200'
     ],
     credentials:true
 }))

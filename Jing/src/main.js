@@ -22,6 +22,9 @@ Vue.use(VueLazyload,{
     attempt:1,   //加载失败后的重试次数，默认为3
     listenEvent:['scroll']  //加载方式 在scroll方式下才会加载
 });
+
+
+
 new Vue({
   el: '#app',
   router,

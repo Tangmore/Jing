@@ -11,7 +11,7 @@
   import commonHead from '../public/commonHead';
  import CartMain from './CartMain';
  import CartFooter from './CartFooter';
-import {mapActions} from 'vuex'
+// import {mapActions} from 'vuex'
  export default{
    data() {
      return {
