@@ -14,7 +14,6 @@
           <label>发现</label>
         </router-link>
         <router-link  to="/cart" class="tabItem">
-
           <i class="iconfont icon-gouwuche"></i>
           <label>购物车</label>
         </router-link>

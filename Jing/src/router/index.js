@@ -18,7 +18,7 @@ export default new Router({
     {path: '/',redirect: '/home'},
     {path: '/detail/:id',component: GoodsDetail},//详情
     {path: '/search',component: SearchMain},
-    {path: '/catgory',component: Catgory},
+    // {path: '/catgory',component: Catgory},
     {path: '/catgory/:id',component: Catgory},
     {path: '/find',component: Find},
     {path: '/cart',component: Cart},
