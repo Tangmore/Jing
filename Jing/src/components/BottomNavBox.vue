@@ -19,7 +19,8 @@
         </router-link>
         <router-link  to="/mine" class="tabItem">
           <i class="iconfont icon-wode"></i>
-          <label>我的</label>
+          <!-- <label>我的</label> -->
+          <label>未登陆</label>
         </router-link>
  
     </footer>

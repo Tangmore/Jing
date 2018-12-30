@@ -3,6 +3,7 @@
           <div class="homeSearchBox">
               <!-- logo -->
                 <a href="#" class="icon_logo"></a>
+                <!-- <img src="../../../static/lo.png" alt="" class="icon_logo"> -->
               <!-- 搜索框 -->
                 <form action="#">
                     <i class="iconfont icon-iconfontsousuokuangsousuo icon_search"></i>
@@ -50,14 +51,14 @@ import {topNavFixed}  from '../../assets/js/header.js';
 
 /*logo*/
  .homeSearchBox .icon_logo {
-    width: 60px;
-    height: 36px;
+    width: 180px;
+    height:180px;
     position: absolute;
-    top: 4px;
-    left: 10px;
+    top: 5px;
+    left: -34px;
     display: block;
-    background:url('../../assets/images/sprites.png') 0 -303px;
-    background-size: 200px 200px;
+    background:url('../../../static/lo.png') 0 -303px; 
+    background-size: 156px 205px;
 }
 
 .homeSearchBox form {
