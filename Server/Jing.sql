@@ -4973,7 +4973,8 @@ CREATE TABLE `user` (
   `user_name` varchar(100) NOT NULL,
   `login_password` varchar(100) NOT NULL,
   `pay_password` varchar(100) DEFAULT NULL,
-  `user_number` varchar(40) NOT NULL,
+  `user_phone` char(11) NOT NULL,
+  `user_number` varchar(40) DEFAULT NULL,
   `user_photo` varchar(200) DEFAULT NULL,
   `verification_code` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`user_id`)
@@ -4982,7 +4983,3 @@ CREATE TABLE `user` (
 -- ----------------------------
 -- Records of user
 -- ----------------------------
-INSERT INTO `user` VALUES ('1', 'huangche', 'huangche', '123456', '18389379755', null, null);
-INSERT INTO `user` VALUES ('2', 'huangche123', 'http://127.0.0.1:8080/back/images/userphone.jpg', null, '18269287753', null, null);
-INSERT INTO `user` VALUES ('3', 'rootcat007', 'cdd733aad2d0b134c537011af33613f1', null, '18389378862', null, null);
-INSERT INTO `user` VALUES ('4', 'xiaoyanzi', '7c0d49184b57774a3d73cb591e20d30d', null, '18889409793', null, null);

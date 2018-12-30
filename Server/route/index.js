@@ -154,25 +154,20 @@ const route = express.Router();
 
    
     /*
-     *user reg func
+     *用户注册
      */
     route.post('/reg', (req, res) => {
-
         let mObj = {};
         for (let obj in req.body) {
             mObj = JSON.parse(obj);
         }
-        let regName = mObj.regName;
+        let regPhone = mObj.regPhone;
         let regPasswd = mObj.regPasswd;
         regPasswd = common.md5(regPasswd + common.MD5_SUFFXIE);
-        const insUserInfo = `INSERT INTO user(user_name,login_password,user_number) VALUES('${regName}','${regPasswd}','${regName}')`;
-        delReg(insUserInfo, res);
-    });
-    /*
-     *deal user register
-     */
-    function delReg(insUserInfo, res) {
-        pool.query(insUserInfo, (err) => {
+
+        const insUserInfo = `INSERT INTO user(user_phone,login_password)
+         VALUES('${regPhone}','${regPasswd}')`;
+        pool.query(insUserInfo,[regPhone,regPasswd], (err) => {
             if (err) {
                 console.error(err);
                 res.send({ 'msg': '服务器出错', 'status': 0 }).end();
@@ -180,43 +175,74 @@ const route = express.Router();
                 res.send({ 'msg': '注册成功', 'status': 1 }).end();
             }
         })
-    };
+    });
+
+    /**
+     * 验证手机号
+     */
+    route.get('/ackphone',(req,res)=>{
+        var phone = req.query.phone;
+        var ackUserPhone=`SELECT user_id FROM user 
+        WHERE user_phone=?`;
+        pool.query(ackUserPhone,phone,(err,result)=>{
+            if(err) throw (err);
+            if(result.length>0){
+                res.send({
+                    code:1,
+                    msg:"手机号已被占用！"
+                });
+            }
+        })
+    })
+
+
+/**
+ * 用户登录
+ */
     route.post('/login', (req, res) => {
 
         let mObj = {};
         for (let obj in req.body) {
             mObj = JSON.parse(obj);
-            console.log(mObj);
+            // console.log(mObj);
         }
-        let username = mObj.loginName;
-        //let password = common.md5(mObj.loginPawd + common.MD5_SUFFXIE);
+        let user_phone = mObj.loginPhone;
+        let password = common.md5(mObj.loginPawd + common.MD5_SUFFXIE);
         // console.log(username, mObj.passwd);
-        const selectUser = `SELECT * FROM user where user_name='${username}'`;
+        const selectUser = `SELECT * FROM user where user_phone='${user_phone}'`;
         pool.query(selectUser, (err, data) => {
-            if (err) {
-                console.log(err);
-                res.send({ 'msg': '服务器出错', 'status': 0 }).end();
-            } else {
+            if (err) throw err;
                 if (data.length == 0) {
                     res.send({ 'msg': '该用户不存在', 'status': -1 }).end();
                 } else {
                     let dataw = data[0];
-                    console.log(dataw, dataw.login_password, mObj.loginPawd);
-                    //login sucess
-                    if (dataw.login_password === mObj.loginPawd) {
+                   
+                    if (dataw.login_password === password) {
                         //save the session 
                         req.session['user_id'] = dataw.user_id;
                         dataw.msg = "登录成功";
                         dataw.status = 1;
+                        console.log(dataw)
                         res.send(dataw).end();
                     } else {
                         res.send({ 'msg': '密码不正确', 'status': -2 }).end();
                     }
                 }
-            }
-        });
-
     });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     route.get('/userinfo', (req, res) => {
         let uId = req.query.uId;

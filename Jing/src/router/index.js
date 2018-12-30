@@ -8,7 +8,8 @@ import Cart from '../components/cart/Cart'
 import Mine from '../components/mine/Mine'
 import GoodsDetail from '../components/detail/GoodsDetail'
 import SearchMain from '../components/search/SearchMain'
-import Login from '../components/mine/login'
+import Login from '../components/mine/Login'
+import Register from '../components/mine/Register'
 Vue.use(Router)
 
 export default new Router({
@@ -24,6 +25,7 @@ export default new Router({
     {path: '/cart',component: Cart},
     {path: '/mine',component: Mine},
     {path:'/login',component:Login},
+    {path:'/register',component:Register},
     {path: '*',redirect: '/home'}
   ]
 })
