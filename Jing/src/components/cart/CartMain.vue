@@ -18,11 +18,12 @@
 
                 <div class="cart_detial_box">   
                     
-                    <a href="#" class="cart_product_link"> 
-                           <img v-lazy="item.product_img_url" alt=""> 
-                    </a>
+                    <router-link :to="'/detail/'+item.product_id" class="cart_product_link"> 
+                           <img v-lazy="item.product_img_url" alt="">
+                     </router-link>
+                  
                     <div class="item_names">
-                        <a href="#">
+                        <a href="javascript:void(0)">
                             <span>{{item.product_name}}</span>
                         </a>
                     </div> 
@@ -44,31 +45,28 @@
                             <span class="item_count_sub" @click="decrementData(item.product_id)">-</span>
                          
                         </div> 
-
-                    </div>
+                    </div>    
+                    <i class='iconfont icon-delete' 
+                    style='float:right;margin-top:10px;margin-right:6px;' @click='popStatus=true;curId=item.category_id'></i>
                 </div>
-                    <!-- <div class="cart_del clearfix" @click="delCart(item.product_id)">
-                        <div class="del_top" >
-                        </div>
-                        <div class="del_bottom">
-                        </div>
-                    </div> -->
             </div>
        </div>
  
-        <!-- <div class="pop" v-show="popStatus">
+        <div class="pop" v-show="popStatus">
           <div class="pop_box">
               <div class="del_info">
                   确定要删除该商品吗？ 
               </div>
-              <div class="del_cancel" @click="delCancel">
-                  取消
-              </div>
-              <div class="del_ok" @click="delOk">
-                  确定
+              <div class='cop-btn'>
+                <div class="btn del_cancel" @click="delCancel">
+                    取消
+                </div>
+                <div class="btn del_ok" @click="delOk">
+                    确定
+                </div>
               </div>
           </div>
-        </div> -->
+        </div> 
   </main>
 </template>
 
@@ -90,22 +88,18 @@ export default {
   },
    methods:{
     ...mapActions(['incrementData','decrementData']),
+    delCancel:function(){   //取消
+      this.popStatus = false;
+    //   console.log(this.curId)
+    },
+    delOk:function(){   //确定 
+      this.$store.dispatch('delCartData',this.curId)
+      this.popStatus = false;
+     
+    },
 
 
-    // delCart:function(id){   //删除
-    //   this.popStatus = true;
-    //   this.curId = id;
-    // },
-    // delCancel:function(){   //取消
-    //   this.popStatus = false;
-    // },
-    // delOk:function(){   //确定
-    //   this.popStatus = false;
-    //   this.$store.dispatch('delCartData',this.curId)
-    // },
-
-
-    changeToTrue(item){
+    changeToTrue(item){    //全选
        item.checked=true;      
     },
     changeToFalse(item){

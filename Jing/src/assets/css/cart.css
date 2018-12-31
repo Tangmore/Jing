@@ -18,6 +18,9 @@ body {
 /* 购物车 */
 main.cart{
      margin: 46px 8px 0px 8px;
+     min-width: 300px;
+     max-width: 640px;
+     margin: 0 auto;
 }
 .cart_content {
     background-color: #fff;
@@ -29,6 +32,7 @@ main.cart{
 .cart_content .cart_shop {
     height: 40px;
     width: 100%;
+   
 }
 
 .shop_info { 
@@ -39,11 +43,6 @@ main.cart{
     margin-left: 28px; 
 }
 
-/* .shop_info .shop_icon {
-    width: 16px;
-    height: 13px;
-    display: inline-block;
-} */
 
 .cart_free {
     height: 44px;
@@ -167,44 +166,15 @@ main.cart{
     float: right;
 }
 
-
-
-
-/*
-.cart_detial_box .cart_del {
-    position: absolute;
-    right: 11px;
-    top: 98px;
-}
-
-.cart_del .del_top {
-    width: 20px;
-    height: 5px;
-    background: url("../images/delete_up.png") no-repeat;
-    background-size: 20px 5px;
-    margin-left: -1px;
-}
-
-.cart_del .del_bottom {
-    width: 18px;
-    height: 18px;
-    background: url("../images/delete_down.png") no-repeat;
-    background-size: 18px 18px;
-    margin-top: -3px;
-}
-
-
-
-
-
+/* 删除弹框 */
 .pop {
     position: fixed;
     left: 0;
     top: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, .4);
-    padding: 0 5%;
+    background: rgba(0, 0, 0, .1);
+    padding: 0 10%;
     z-index:11;
 }
 
@@ -223,57 +193,28 @@ main.cart{
     font-size: 16px;
     color: #888888;
 }
-
-.pop_box .del_cancel {
-    float: left;
+.pop_box .cop-btn{
+   display: flex;
+   flex-direction: row;
+   justify-content: center;
+}
+.pop_box .btn{
     width: 35%;
     height: 35px;
     text-align: center;
     line-height: 35px;
     border: 1px solid #bfbfbf;
     border-radius: 4px;
-    margin-right: 15%;
+    
+}
+.pop_box .del_cancel {
+    border: 1px solid #bfbfbf;   
+    margin-right: 2%;
 }
 
 .pop_box .del_ok {
-    float: left;
-    width: 35%;
-    height: 35px;
-    text-align: center;
-    line-height: 35px;
-    border: 1px solid #bfbfbf;
-    border-radius: 4px;
-    background: #D8505C;
+    background: #ff2000;
     color: #fff;
-    margin-left: 15%;
 }
 
-@-webkit-keyframes delBoxOut {
-    0% {
-        opacity: 0;
-        transform: translateY(-2000px);
-        -webkit-transform: translateY(-2000px);
-    }
-    60% {
-        opacity: 1;
-        transform: translateY(30px);
-        -webkit-transform: translateY(30px);
-    }
-    75% {
-        transform: translateY(-10px);
-        -webkit-transform: translateY(-10px);
-    }
-    90% {
-        transform: translateY(5px);
-        -webkit-transform: translateY(5px);
-    }
-    100% {
-        opacity: 1;
-        transform: none;
-        -webkit-transform: none;
-    }
-}
 
-.delBoxOut {
-    animation: delBoxOut 1s ease;
-} */

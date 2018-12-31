@@ -56,6 +56,9 @@ export default {
   components:{
     popUp
   },
+     mounted(){
+                this.$store.dispatch('hideNav')    //取消底部navbar 
+            },
   methods:{
 	  goBack(){
 		  this.$router.push('/home');
@@ -162,9 +165,7 @@ export default {
                     })
              }
             },
-            mounted(){
-                this.$store.dispatch('hideNav')    //取消底部navbar 
-            },
+         
             destroyed(){
                 this.$store.dispatch('showNav');  
             },  

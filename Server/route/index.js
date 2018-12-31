@@ -76,83 +76,6 @@ const route = express.Router();
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    route.get('/category', (req, res) => {
-        getCateNamesDatas(getCateNames, res);
-    });
-
-    function getCateNamesDatas(getCateNames, res) {
-        pool.query(getCateNames, (err, data) => {
-            if (err) {
-                console.log(err);
-                res.status(500).send('database err').end();
-            } else {
-                if (data.length == 0) {
-                    res.status(500).send('no datas').end();
-                } else {
-                    res.send(data);
-                }
-            }
-        });
-    };
-
-
-    route.get('/categorygoods', (req, res) => {
-        let mId = req.query.mId;
-        const sql = `select * from product,category where product.category_id=category.category_id and category.category_id='${mId}'`;
-        getCateGoods(sql, res);
-    });
-
-    function getCateGoods(sql, res) {
-        pool.query(sql, (err, data) => {
-            if (err) {
-                console.log(err);
-                res.status(500).send('database err').end();
-            } else {
-                if (data.length == 0) {
-                    res.status(500).send('no datas').end();
-                } else {
-                    res.send(data);
-                }
-            }
-        });
-    }
-
-    route.get('/cart', (req, res) => {
-        const cartStr = "SELECT cart_id,user.user_id,product.product_id,product_name,product_uprice,product_img_url,goods_num,product_num,shop_name FROM product,user,goods_cart,shop where product.product_id=goods_cart.product_id and user.user_id=goods_cart.user_id and shop.shop_id = product.shop_id";
-        pool.query(cartStr, (err, data) => {
-            if (err) {
-                console.log(err);
-                res.status(500).send('database err').end();
-            } else {
-                if (data.length == 0) {
-                    res.status(500).send('no datas').end();
-                } else {
-                    res.send(data);
-                }
-            }
-        });
-    })
-
-   
     /*
      *用户注册
      */
@@ -230,17 +153,6 @@ const route = express.Router();
                 }
     });
 });
-
-
-
-
-
-
-
-
-
-
-
 
 
 

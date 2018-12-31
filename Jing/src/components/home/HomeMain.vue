@@ -116,6 +116,7 @@
 }
 .product_content{
     margin-top: 8px;
+    
 }
 .product_content ul{
     height: 130px;
@@ -129,8 +130,9 @@
     float:left;
 }
 .product_sale_item_link .product_sale_item_img{
-    width: 80px;
-    height: 80px;
+    width: 76px;
+    height: 76px;
+    
 }
 @media screen and (max-width:320px){
 .product_sale_item_link .product_sale_item_img{
@@ -167,7 +169,7 @@
     width: 100%;
 }
 .recommend_content_box .recommend_thing_item{
-    width: 50%;
+    width: 49%;
     text-align: center;
     background-color: #fff;
     float:left;

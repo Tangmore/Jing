@@ -47,15 +47,17 @@ import {mapActions,mapGetters,mapState} from 'vuex';
 <style>
 	
 .cart_footer {
+	  max-width: 640px;
+    min-width: 300px;
     width: 100%;
     height: 50px;
     border-top: 1px solid #cccccc;
     position: fixed;
     bottom: 0;
-	left: 0;
+	left: 50%;
 	/*z-index:99;*/
     background-color: #fff;
-
+    transform:translate(-50%);
 }
 /*全选*/
 .cart_footer .all_check_box {

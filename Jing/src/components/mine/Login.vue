@@ -57,6 +57,9 @@
     components: {
       popUp
     },
+       mounted() {
+        this.$store.dispatch('hideNav') //取消底部navbar 
+      },
     methods: {
       goBack() {
         this.$router.push('/home');
@@ -118,6 +121,7 @@
 							window.sessionStorage.userInfo= this.user_phone;
 							setTimeout(()=>{
 								this.$router.push('/home');
+                this.$store.dispatch('showNav');  
 							},2000)
 						}else {
 							this.status=1;
@@ -139,9 +143,7 @@
 				})
 		} 
       },
-      mounted() {
-        this.$store.dispatch('hideNav') //取消底部navbar 
-      },
+   
       destroyed() {
         this.$store.dispatch('showNav')
       },

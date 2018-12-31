@@ -31,7 +31,10 @@ export default {
 <style >
       
 /* 详情页固定头部导航 */
+
 .topBar {
+    max-width: 640px;
+    min-width: 300px;
     width: 100%;
     height: 45px;
     background: #fff;
@@ -40,7 +43,10 @@ export default {
     position: fixed;
     z-index: 99;
     top: 0;
-    left: 0;
+    left: 50%;
+     overflow: hidden;
+     transform:translateX(-50%);
+    
 }
 
 .topBar .icon_back {

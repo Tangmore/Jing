@@ -6,7 +6,9 @@ const store=new Vuex.Store({
      state:{
         shownav:true,
          cartDatas:[], //购物车中的数据
-         checkedAll:false
+         checkedAll:false,
+         user:window.sessionStorage.getItem('userInfo') || '',
+         isLogin:false
      },
   
      actions:{   //用来管理mutation
@@ -27,6 +29,9 @@ const store=new Vuex.Store({
           },
           checkAllItem({commit}){
               commit('CHECKALLITEM')
+          },
+          delCartData({commit,state},data){   //购物车删除
+               commit('DELCARTDATA',data);
           }
 
      },
@@ -83,6 +88,21 @@ const store=new Vuex.Store({
             if(!data){
                 state.checkedAll=false;
             }
+        },
+        sigin(state){
+            state.isLogin=true;
+        },
+        siginout(state){
+            state.isLogin=false;
+            state.user='';
+        },
+        DELCARTDATA(state,data){
+            for(let i=0;i<state.cartDatas.length;i++){
+                if(state.cartDatas[i].product_id==data){
+                    state.cartDatas.splice(i,1);
+                    break;
+                }
+            }
         }
   
      },
@@ -115,10 +135,15 @@ const store=new Vuex.Store({
                 }
             }
             return totalCount;
+        },
+        bottomTitle(state){
+            if(state.user){
+                return '我的';
+            }else{
+                return '未登录';
+            }
         }
-       
-
-    },
+    }
 })
 // 导出
 export default store;

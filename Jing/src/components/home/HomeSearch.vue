@@ -16,8 +16,6 @@
     </header>       
 </template>
 <script>
-import {topNavFixed}  from '../../assets/js/header.js';
-
     export default {
         methods: {
             goSearch(){
@@ -25,19 +23,21 @@ import {topNavFixed}  from '../../assets/js/header.js';
             },
            
         },
-        mounted() {
-            topNavFixed();
-        },
+    
     }
 </script>
 <style>
 .homeHeader {
+    max-width: 600px;
+    min-width: 300px;
     position: fixed;
-    left: 0;
+    left: 50%;
     top: 0;
     width: 100%;
     height: 40px;
     z-index: 2;
+    transform:translate(-50%);
+    
 }
 
 .homeHeader .homeSearchBox {
