@@ -74,7 +74,38 @@ const route = express.Router();
                 }
         });
     }
+/**
+ * 商品分类
+ */
+route.get('/category', (req, res) => { 
+   pool.query(getCateNames, (err, data) => {
+        if (err) {
+            console.log(err);
+            res.status(500).send('database err').end();
+        } else {
+            if (data.length == 0) {
+                res.status(500).send('no datas').end();
+            } else {
+                res.send(data);
+            }
+        }
+    });
+});
 
+route.get('/categorygoods', (req, res) => {
+    let mId = req.query.mId;
+    const sql = `select * from product,category where product.category_id=category.category_id and category.category_id='${mId}'`;
+    pool.query(sql, (err, data) => {
+        if(err) throw err;
+            if (data.length == 0) {
+                res.status(500).send('no datas').end();
+            } else {
+                res.send(data);
+            }
+        
+    })
+        
+});
 
     /*
      *用户注册
@@ -87,7 +118,6 @@ const route = express.Router();
         let regPhone = mObj.regPhone;
         let regPasswd = mObj.regPasswd;
         regPasswd = common.md5(regPasswd + common.MD5_SUFFXIE);
-
         const insUserInfo = `INSERT INTO user(user_phone,login_password)
          VALUES('${regPhone}','${regPasswd}')`;
         pool.query(insUserInfo,[regPhone,regPasswd], (err) => {
