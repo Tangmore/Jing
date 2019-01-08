@@ -19,11 +19,11 @@
         <p class="forget_password">忘记密码</p>
         <div class="login_box">
           <!-- <a href="#" :class="(ackAllFlag&&(!phoneAck.flag)&&(!upwdAck.flag))?'all_login_box':''" @click='goLogin'>登录</a> -->
-		  <a href="#" class="all_login_box" @click='goLogin'>登录</a>
+		  <a href="javascript:void(0)" class="all_login_box" @click='goLogin'>登录</a>
 		  
 		</div>
         <div class="login_box_quick">
-          <a href="#">一键登录</a>
+          <a href="javascript:void(0)">一键登录</a>
         </div>
         <div class="go_reg_box">
           <router-link tag="span" to="/register">快速注册</router-link>
@@ -119,10 +119,10 @@
 							this.msg=res.data.msg;
 							this.status=1;
 							window.sessionStorage.userInfo= this.user_phone;
-							setTimeout(()=>{
+						
 								this.$router.push('/home');
                 this.$store.dispatch('showNav');  
-							},2000)
+							
 						}else {
 							this.status=1;
 							this.msg=res.data.msg;

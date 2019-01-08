@@ -14,9 +14,10 @@ Vue.use(Router)
 
 export default new Router({
   linkActiveClass: 'active',   //在router-link被激活时自动添加.active类
-  routes: [
+  mode:'history',//去掉默认路由#
+  routes: [   
+     {path: '/',redirect: '/home'},
     {path: '/home', component: Home},
-    {path: '/',redirect: '/home'},
     {path: '/detail/:id',component: GoodsDetail},//详情
     {path: '/search',component: SearchMain},
     {path: '/catgory/:id',component: Catgory},

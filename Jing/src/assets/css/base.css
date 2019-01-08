@@ -1,5 +1,9 @@
 body{
     background-color: #fff;
+    position: relative; 
+    font-size: 14px;
+    font-family: "Microsoft YaHei" sans-serif;
+    color: #000;
   }
   .m_layout {
       min-width: 300px;
@@ -19,11 +23,6 @@ body{
     /* -webkit-box-sizing: border-box; */
 }
 
-body {
-    font-size: 14px;
-    font-family: "Microsoft YaHei" sans-serif;
-    color: #000;
-}
 
 a {
     text-decoration: none;
