@@ -28,7 +28,7 @@
 </script>
 <style>
 .homeHeader {
-    max-width: 600px;
+    max-width: 640px;
     min-width: 300px;
     position: fixed;
     left: 50%;

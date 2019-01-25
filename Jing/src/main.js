@@ -11,7 +11,7 @@ import './assets/css/base.css'
 
 Vue.config.productionTip = false
 /* eslint-disable no-new */
-axios.defaults.baseURL='http://127.0.0.1:3008';
+axios.defaults.baseURL='http://148.70.65.234:3008';
 axios.defaults.headers['Content-Type']='application/x-www-form-urlencoded'
 Vue.prototype.axios=axios;
 

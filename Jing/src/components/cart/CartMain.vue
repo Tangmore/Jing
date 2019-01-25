@@ -52,7 +52,7 @@
             </div>
        </div>
  
-        <div class="pop" v-show="popStatus">
+        <div class="askPop" v-show="popStatus">
           <div class="pop_box">
               <div class="del_info">
                   确定要删除该商品吗？ 

@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <h1>{{ msg }}</h1>
+  <div class='findBox'>
+    <h1>find</h1>
   </div>
 </template>
 
@@ -8,8 +8,14 @@
 export default {
   data () {
     return {
-      msg: 'find'
+      
     }
   }
 }
 </script>
+<style >
+   .findBox{
+       max-width: 640px;
+       min-width: 300px;
+   }
+</style>

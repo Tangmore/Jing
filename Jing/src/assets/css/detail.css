@@ -127,7 +127,6 @@ body {
     position: fixed;
     left: 50%;
     bottom: 0;
-    /* z-index:10; */
     background-color: #fff;
     border-top: 1px solid rgb(236, 197, 152);
     border-bottom: 1px solid #bfbfbf;

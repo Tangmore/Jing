@@ -145,6 +145,7 @@ main.cart{
     border: 1px solid #CBCBCB;
     text-align: center;
     float: right;
+    line-height: 24px;
 }
 
 .cart_product_sell .cart_count_box .item_count_sub {
@@ -167,18 +168,17 @@ main.cart{
 }
 
 /* 删除弹框 */
-.pop {
+.askPop {
     position: fixed;
     left: 0;
     top: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, .1);
     padding: 0 10%;
     z-index:11;
 }
 
-.pop .pop_box {
+.askPop .pop_box {
     width: 85%;
     height: 140px;
     background-color: #fff;
@@ -187,18 +187,18 @@ main.cart{
     padding: 0 5%;
 }
 
-.pop_box .del_info {
+.askPop .pop_box .del_info {
     text-align: center;
     line-height: 70px;
     font-size: 16px;
     color: #888888;
 }
-.pop_box .cop-btn{
+.askPop .pop_box .cop-btn{
    display: flex;
    flex-direction: row;
    justify-content: center;
 }
-.pop_box .btn{
+.askPop .pop_box .btn{
     width: 35%;
     height: 35px;
     text-align: center;
@@ -207,12 +207,13 @@ main.cart{
     border-radius: 4px;
     
 }
-.pop_box .del_cancel {
+.askPop .pop_box .del_cancel {
     border: 1px solid #bfbfbf;   
     margin-right: 2%;
+    color:#000;
 }
 
-.pop_box .del_ok {
+.askPop .pop_box .del_ok {
     background: #ff2000;
     color: #fff;
 }

@@ -67,7 +67,7 @@
         },
         methods:{
             getHomeData(){
-                this.axios.get('/home').then((res)=>{
+                this.axios.get('/homedata').then((res)=>{
                     console.log(res);
                     if(res.status =='200'){
                         this.saleDatas = res.data.slice(0,4);
